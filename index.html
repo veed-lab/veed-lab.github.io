@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Салманов Давид — Технолог · Инженер-исследователь</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root[data-theme="light"]{
+  --bg:#f7f6f1;--bg-elev:#fff;--surface:#fdfcf8;
+  --text:#0f1410;--text-soft:#3a3f3a;--muted:#7a807a;
+  --line:rgba(15,20,16,.08);--line-strong:rgba(15,20,16,.16);
+  --accent:#1f6b3a;--accent-2:#c5e063;--accent-soft:rgba(31,107,58,.08);
+  --shadow:0 1px 2px rgba(15,20,16,.04),0 12px 40px -8px rgba(15,20,16,.08);
+}
+:root[data-theme="dark"]{
+  --bg:#0a0d0b;--bg-elev:#12161300;--surface:#161b18;
+  --text:#f0efe8;--text-soft:#c8cdc6;--muted:#7d847d;
+  --line:rgba(240,239,232,.08);--line-strong:rgba(240,239,232,.18);
+  --accent:#a8e063;--accent-2:#56ab2f;--accent-soft:rgba(168,224,99,.1);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 20px 60px -10px rgba(0,0,0,.6);
+}
+
+html{scroll-behavior:smooth}
+body{
+  font-family:'Manrope',-apple-system,system-ui,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.55;font-size:16px;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background .4s ease,color .4s ease;
+}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* Decorative grid background */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    radial-gradient(circle at 15% 20%, var(--accent-soft) 0%, transparent 35%),
+    radial-gradient(circle at 85% 70%, var(--accent-soft) 0%, transparent 40%);
+  opacity:.6;
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:radial-gradient(ellipse at center,#000 0%,transparent 70%);
+  opacity:.5;
+}
+.container{max-width:1180px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+
+/* NAV */
+nav.top{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);
+  background:color-mix(in srgb, var(--bg) 75%, transparent);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:18px 32px;max-width:1180px;margin:0 auto;gap:24px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;letter-spacing:-.3px}
+.brand-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.nav-links{display:flex;gap:4px}
+.nav-links a{
+  color:var(--text-soft);text-decoration:none;font-size:14px;font-weight:500;
+  padding:8px 14px;border-radius:8px;transition:all .2s;
+}
+.nav-links a:hover{background:var(--accent-soft);color:var(--accent)}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.theme-toggle{
+  width:38px;height:38px;border-radius:50%;border:1px solid var(--line-strong);
+  background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:var(--text);transition:all .2s;
+}
+.theme-toggle:hover{background:var(--accent-soft);border-color:var(--accent)}
+.btn-cta{
+  background:var(--text);color:var(--bg);padding:10px 18px;border-radius:8px;
+  font-size:14px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+  transition:transform .2s;
+}
+.btn-cta:hover{transform:translateY(-1px)}
+
+/* HERO */
+.hero{padding:80px 0 100px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:center}
+.hero-meta{display:flex;align-items:center;gap:12px;margin-bottom:24px;font-size:13px;color:var(--muted);font-weight:500}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--accent)}50%{box-shadow:0 0 0 8px transparent}}
+
+.hero h1{
+  font-size:clamp(40px,6.5vw,82px);line-height:.98;font-weight:700;
+  letter-spacing:-3px;margin-bottom:24px;
+}
+.hero h1 .accent{
+  background:linear-gradient(120deg,var(--accent) 0%,var(--accent-2) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  font-style:italic;font-weight:500;
+}
+.hero .role{
+  display:inline-block;font-size:14px;font-weight:600;text-transform:uppercase;
+  letter-spacing:2px;color:var(--accent);margin-bottom:16px;
+  padding:6px 14px;border:1px solid var(--accent);border-radius:100px;
+  background:var(--accent-soft);
+}
+.hero .lead{font-size:18px;color:var(--text-soft);max-width:560px;margin-bottom:36px;line-height:1.6}
+.hero-stats{display:flex;gap:40px;margin-bottom:36px;flex-wrap:wrap}
+.stat .num{font-size:36px;font-weight:700;letter-spacing:-1px;line-height:1;background:linear-gradient(180deg,var(--text),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-top:8px;font-weight:500}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:14px 24px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s;border:1px solid transparent}
+.btn-primary{background:var(--text);color:var(--bg)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--line-strong)}
+.btn-ghost:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+
+/* HERO VISUAL — molecule SVG */
+.hero-visual{position:relative;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.molecule{width:100%;height:100%;animation:spin 60s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.molecule circle{transition:all .4s}
+.molecule .node{fill:var(--accent);opacity:.9}
+.molecule .node-2{fill:var(--accent-2);opacity:.8}
+.molecule .bond{stroke:var(--text-soft);stroke-width:1.5;opacity:.4}
+.flask-badge{
+  position:absolute;background:var(--bg-elev);border:1px solid var(--line-strong);
+  border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:10px;
+  box-shadow:var(--shadow);font-size:13px;font-weight:600;
+  animation:float 4s ease-in-out infinite;
+}
+.flask-badge.b1{top:8%;left:-10%}
+.flask-badge.b2{bottom:14%;right:-8%;animation-delay:-2s}
+.flask-badge.b3{top:50%;right:-14%;animation-delay:-1s}
+.flask-badge .ico{width:32px;height:32px;border-radius:8px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* SECTION */
+section{padding:100px 0;position:relative}
+.s-head{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:56px;flex-wrap:wrap}
+.s-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);font-weight:500;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.s-num::before{content:'';width:24px;height:1px;background:var(--accent)}
+.s-title{font-size:clamp(32px,4.5vw,56px);font-weight:700;letter-spacing:-1.5px;line-height:1.05;max-width:720px}
+.s-title em{font-style:italic;font-weight:400;color:var(--accent)}
+.s-sub{color:var(--muted);max-width:340px;font-size:15px}
+
+/* PRACTICE — bento grid */
+.practice-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.p-card{
+  background:var(--bg-elev);border:1px solid var(--line);border-radius:20px;padding:28px;
+  position:relative;overflow:hidden;transition:all .4s cubic-bezier(.2,.8,.2,1);cursor:default;
+  display:flex;flex-direction:column;justify-content:space-between;min-height:220px;
+}
+.p-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow)}
+.p-card::after{
+  content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% -20%,var(--accent-soft),transparent 60%);
+  opacity:0;transition:opacity .4s;pointer-events:none;
+}
+.p-card:hover::after{opacity:1}
+.p-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);font-weight:500;letter-spacing:1px}
+.p-title{font-size:20px;font-weight:600;letter-spacing:-.5px;margin-top:14px;line-height:1.2}
+.p-desc{font-size:14px;color:var(--muted);margin-top:10px;line-height:1.5}
+.p-icon{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:auto}
+
+.p-card.span-3{grid-column:span 3}
+.p-card.span-2{grid-column:span 2}
+.p-card.span-4{grid-column:span 4}
+.p-card.feature{
+  background:linear-gradient(135deg,var(--accent) 0%,#2d8e4a 100%);
+  color:#fff;border:none;
+}
+.p-card.feature .p-num,.p-card.feature .p-title{color:#fff}
+.p-card.feature .p-desc{color:rgba(255,255,255,.85)}
+.p-card.feature .p-icon{background:rgba(255,255,255,.15);color:#fff}
+
+/* SKILLS */
+.skills-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
+.skill-col h4{font-size:14px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:20px;font-weight:600;display:flex;align-items:center;gap:10px}
+.skill-col h4::before{content:'';width:8px;height:8px;background:var(--accent);border-radius:2px;transform:rotate(45deg)}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px}
+.skill-tags span{
+  padding:8px 14px;border-radius:8px;font-size:13px;font-weight:500;
+  background:var(--bg-elev);border:1px solid var(--line);color:var(--text-soft);
+  transition:all .2s;cursor:default;
+}
+.skill-tags span:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);transform:translateY(-1px)}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--accent),transparent)}
+.tl-item{position:relative;padding-bottom:48px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:'';position:absolute;left:-30px;top:8px;width:18px;height:18px;border-radius:50%;background:var(--bg);border:3px solid var(--accent);box-shadow:0 0 0 4px var(--bg)}
+.tl-date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);font-weight:500;margin-bottom:6px}
+.tl-card{background:var(--bg-elev);border:1px solid var(--line);border-radius:16px;padding:28px;transition:all .3s}
+.tl-card:hover{border-color:var(--accent);transform:translateX(4px)}
+.tl-role{font-size:22px;font-weight:700;letter-spacing:-.5px;margin-bottom:4px}
+.tl-company{font-size:14px;color:var(--muted);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.tl-company::before{content:'';width:4px;height:4px;background:var(--accent);border-radius:50%}
+.tl-list{list-style:none}
+.tl-list li{font-size:15px;color:var(--text-soft);padding:6px 0 6px 22px;position:relative;line-height:1.5}
+.tl-list li::before{content:'→';position:absolute;left:0;color:var(--accent);font-weight:500}
+
+/* EDU */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.edu-card{
+  background:var(--bg-elev);border:1px solid var(--line);border-radius:16px;padding:32px;
+  position:relative;overflow:hidden;transition:all .3s;
+}
+.edu-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.edu-card .year{font-size:64px;font-weight:800;letter-spacing:-3px;line-height:1;background:linear-gradient(180deg,var(--accent),transparent);-webkit-background-clip:text;background-clip:text;color:transparent}
+.edu-card .degree{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin:8px 0 18px}
+.edu-card h3{font-size:18px;font-weight:600;margin-bottom:6px;line-height:1.3}
+.edu-card p{font-size:14px;color:var(--muted)}
+
+/* CONTACT */
+.contact-card{
+  background:var(--bg-elev);border:1px solid var(--line);border-radius:24px;padding:64px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.contact-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% -20%,var(--accent-soft),transparent 60%);
+}
+.contact-card>*{position:relative}
+.contact-card h2{font-size:clamp(36px,5vw,64px);font-weight:700;letter-spacing:-2px;line-height:1.05;margin-bottom:18px}
+.contact-card h2 em{font-style:italic;color:var(--accent);font-weight:500}
+.contact-card .lead{color:var(--text-soft);max-width:480px;margin:0 auto 36px;font-size:17px}
+.contact-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+
+/* FOOTER */
+footer{padding:48px 0;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:13px}
+footer .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* Responsive */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:60px}
+  .hero-visual{max-width:340px;margin:0 auto}
+  .practice-grid{grid-template-columns:repeat(2,1fr)}
+  .p-card.span-3,.p-card.span-2,.p-card.span-4{grid-column:span 2}
+  .skills-wrap{grid-template-columns:1fr;gap:32px}
+  .edu-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .contact-card{padding:48px 24px}
+  section{padding:64px 0}
+  .hero{padding:48px 0 64px}
+}
+@media(max-width:500px){
+  .practice-grid{grid-template-columns:1fr}
+  .p-card.span-3,.p-card.span-2,.p-card.span-4{grid-column:span 1}
+  .container{padding:0 20px}
+}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="nav-inner">
+    <div class="brand"><span class="brand-dot"></span>САЛМАНОВ · CV</div>
+    <div class="nav-links">
+      <a href="#practice">Направления</a>
+      <a href="#skills">Навыки</a>
+      <a href="#experience">Опыт</a>
+      <a href="#education">Образование</a>
+      <a href="#contact">Контакты</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Сменить тему">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <a class="btn-cta" href="salmanov-cv.pdf" download>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PDF
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-meta"><span class="live-dot"></span>Доступен для предложений · Москва</div>
+        <span class="role">Технолог · Инженер-исследователь</span>
+        <h1>Салманов<br>Давид <span class="accent">Олегович</span></h1>
+        <p class="lead">Делаю лучше пищевое производство: от анализа сырья до научных исследований ЭХА-растворов и ПАВ. 4+ года между лабораторией и цехом — пиво, вино, молочная промышленность.</p>
+        <div class="hero-stats">
+          <div class="stat"><div class="num">4.5</div><div class="label">года опыта</div></div>
+          <div class="stat"><div class="num">3</div><div class="label">производства</div></div>
+          <div class="stat"><div class="num">ВНИМИ</div><div class="label">ФГАНУ · сейчас</div></div>
+        </div>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Связаться
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#practice" class="btn btn-ghost">Что я умею</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <svg class="molecule" viewBox="0 0 400 400">
+          <g class="bond">
+            <line x1="200" y1="200" x2="100" y2="100"/>
+            <line x1="200" y1="200" x2="300" y2="100"/>
+            <line x1="200" y1="200" x2="100" y2="300"/>
+            <line x1="200" y1="200" x2="300" y2="300"/>
+            <line x1="200" y1="200" x2="200" y2="60"/>
+            <line x1="200" y1="200" x2="60" y2="200"/>
+            <line x1="200" y1="200" x2="340" y2="200"/>
+            <line x1="200" y1="200" x2="200" y2="340"/>
+            <line x1="100" y1="100" x2="60" y2="200"/>
+            <line x1="100" y1="100" x2="200" y2="60"/>
+            <line x1="300" y1="100" x2="200" y2="60"/>
+            <line x1="300" y1="100" x2="340" y2="200"/>
+            <line x1="300" y1="300" x2="340" y2="200"/>
+            <line x1="300" y1="300" x2="200" y2="340"/>
+            <line x1="100" y1="300" x2="200" y2="340"/>
+            <line x1="100" y1="300" x2="60" y2="200"/>
+          </g>
+          <circle class="node" cx="200" cy="200" r="22"/>
+          <circle class="node-2" cx="100" cy="100" r="10"/>
+          <circle class="node-2" cx="300" cy="100" r="10"/>
+          <circle class="node-2" cx="100" cy="300" r="10"/>
+          <circle class="node-2" cx="300" cy="300" r="10"/>
+          <circle class="node" cx="200" cy="60" r="14"/>
+          <circle class="node" cx="60" cy="200" r="14"/>
+          <circle class="node" cx="340" cy="200" r="14"/>
+          <circle class="node" cx="200" cy="340" r="14"/>
+        </svg>
+        <div class="flask-badge b1">
+          <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6v4l5 10a2 2 0 0 1-2 3H6a2 2 0 0 1-2-3l5-10V3z"/></svg></div>
+          <div>KRÜSS · pH · ОВП</div>
+        </div>
+        <div class="flask-badge b2">
+          <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></div>
+          <div>ХАССП · GMP · ISO</div>
+        </div>
+        <div class="flask-badge b3">
+          <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg></div>
+          <div>ЭХА · ПАВ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE BENTO -->
+<section id="practice">
+  <div class="container">
+    <div class="s-head reveal">
+      <div>
+        <div class="s-num">01 / Направления</div>
+        <h2 class="s-title">Где я приношу <em>пользу</em> производству</h2>
+      </div>
+      <p class="s-sub">Восемь направлений работы — от рутинных анализов до научных публикаций по тематике санобработки.</p>
+    </div>
+
+    <div class="practice-grid">
+      <div class="p-card feature span-3 reveal">
+        <div class="p-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6v4l5 10a2 2 0 0 1-2 3H6a2 2 0 0 1-2-3l5-10V3z"/></svg></div>
+        <div>
+          <div class="p-num">01 · Ключевое</div>
+          <h3 class="p-title">Физико-химический анализ сырья и готовой продукции</h3>
+          <p class="p-desc">pH, ОВП, экстрактивность, кислотность, CO₂ / O₂, сухие вещества, пеностойкость, плотность, минерализация. Работа с КИП и прибором краевого угла смачивания KRÜSS.</p>
+        </div>
+      </div>
+
+      <div class="p-card span-3 reveal">
+        <div class="p-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <div>
+          <div class="p-num">02</div>
+          <h3 class="p-title">Исследование ЭХА-растворов и ПАВ</h3>
+          <p class="p-desc">Эффективность анолита, католита и поверхностно-активных веществ в системах санобработки молочного производства.</p>
+        </div>
+      </div>
+
+      <div class="p-card span-2 reveal">
+        <div class="p-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v6l-4 8a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-4-8V2"/><line x1="7" y1="2" x2="17" y2="2"/></svg></div>
+        <div>
+          <div class="p-num">03</div>
+          <h3 class="p-title">Виноделие — полный цикл</h3>
+          <p class="p-desc">От сбора винограда до розлива. Анализы сусла, контроль брожения, дегустации.</p>
+        </div>
+      </div>
+
+      <div class="p-card span-2 reveal">
+        <div class="p-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2v6c0 3 3 4 6 4s6-1 6-4V2"/><path d="M6 8v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/></svg></div>
+        <div>
+          <div class="p-num">04</div>
+          <h3 class="p-title">Пиво и безалкогольные напитки</h3>
+          <p class="p-desc">Контроль розлива, герметичность, маркировка. Качество воды — питьевой, минеральной, умягчённой.</p>
+        </div>
+      </div>
+
+      <div class="p-card span-2 reveal">
+        <div class="p-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <div>
+          <div class="p-num">05</div>
+          <h3 class="p-title">ХАССП / GMP / ISO</h3>
+          <p class="p-desc">Санитария, мойка, дезинфекция. Документация, нормативная база — ГОСТ, ТУ, СанПиН.</p>
+        </div>
+      </div>
+
+      <div class="p-card span-2 reveal">
+        <div class="p-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="12" y2="17"/></svg></div>
+        <div>
+          <div class="p-num">06</div>
+          <h3 class="p-title">Рецептуры и технологические карты</h3>
+          <p class="p-desc">Разработка и корректировка карт, подбор дрожжей и ферментов, стабилизация продукта.</p>
+        </div>
+      </div>
+
+      <div class="p-card span-2 reveal">
+        <div class="p-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 0-7 17l7 3 7-3a10 10 0 0 0-7-17z"/><circle cx="12" cy="11" r="3"/></svg></div>
+        <div>
+          <div class="p-num">07</div>
+          <h3 class="p-title">Органолептика и дегустация</h3>
+          <p class="p-desc">Вкус, аромат, цвет, послевкусие. Соответствие стандартам и спецификациям.</p>
+        </div>
+      </div>
+
+      <div class="p-card span-2 reveal">
+        <div class="p-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+        <div>
+          <div class="p-num">08</div>
+          <h3 class="p-title">Научные публикации</h3>
+          <p class="p-desc">Статьи и тезисы для отраслевых конференций по санобработке и пищевому производству.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="s-head reveal">
+      <div>
+        <div class="s-num">02 / Навыки</div>
+        <h2 class="s-title">Инструменты <em>и методы</em></h2>
+      </div>
+      <p class="s-sub">Лабораторное оборудование, нормативная база, soft skills — что есть в арсенале.</p>
+    </div>
+    <div class="skills-wrap">
+      <div class="skill-col reveal">
+        <h4>Лаборатория</h4>
+        <div class="skill-tags">
+          <span>pH</span><span>ОВП</span><span>CO₂ / O₂</span><span>Кислотность</span>
+          <span>Экстрактивность</span><span>Пеностойкость</span><span>Плотность</span>
+          <span>Краевой угол · KRÜSS</span><span>Титрование</span>
+          <span>ЭХА-растворы</span><span>ПАВ</span><span>Органолептика</span>
+          <span>Дегустация</span><span>Микробная загрязнённость</span>
+        </div>
+      </div>
+      <div class="skill-col reveal">
+        <h4>Производство</h4>
+        <div class="skill-tags">
+          <span>ХАССП</span><span>GMP</span><span>ISO</span>
+          <span>ГОСТ · ТУ · СанПиН</span><span>Технологические карты</span>
+          <span>Контроль розлива</span><span>Санитария</span><span>Дезинфекция</span>
+          <span>Озонирование</span><span>Производственный контроль</span>
+        </div>
+      </div>
+      <div class="skill-col reveal">
+        <h4>Менеджмент</h4>
+        <div class="skill-tags">
+          <span>Управление персоналом</span><span>Обучение сотрудников</span>
+          <span>Планирование</span><span>Лидерство</span>
+          <span>Внимание к деталям</span><span>Работа в команде</span>
+          <span>Корпоративная этика</span><span>Презентации</span>
+        </div>
+      </div>
+      <div class="skill-col reveal">
+        <h4>Цифровые & доп.</h4>
+        <div class="skill-tags">
+          <span>MS Office · Excel</span><span>1С</span>
+          <span>Научные публикации</span><span>Тезисы конференций</span>
+          <span>Русский — родной</span><span>Английский — работа с текстом</span>
+          <span>Права кат. B</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="s-head reveal">
+      <div>
+        <div class="s-num">03 / Опыт</div>
+        <h2 class="s-title">От лозы до <em>лаборатории</em></h2>
+      </div>
+      <p class="s-sub">Три позиции, три отрасли, общий стаж 4 года 6 месяцев.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-date">2025 · СЕНТЯБРЬ — НАСТ. ВРЕМЯ · 9 МЕС</div>
+        <div class="tl-card">
+          <h3 class="tl-role">Инженер-исследователь</h3>
+          <div class="tl-company">ФГАНУ ВНИМИ — Всероссийский НИИ молочной промышленности · Москва</div>
+          <ul class="tl-list">
+            <li>Исследование эффективности ЭХА-растворов (анолит / католит) и ПАВ в системах санобработки оборудования</li>
+            <li>Лабораторные эксперименты по воздействию пенных и беспенных ПАВ на микробную загрязнённость нержавеющей стали</li>
+            <li>Измерение краевого угла смачивания (KRÜSS), pH, ОВП, плотности; титрование на концентрацию активных веществ</li>
+            <li>Подготовка научных статей и тезисов для отраслевых конференций</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-date">2022 МАРТ — 2023 СЕНТЯБРЬ · 1 ГОД 7 МЕС</div>
+        <div class="tl-card">
+          <h3 class="tl-role">Химик-лаборант</h3>
+          <div class="tl-company">ГК «Пивоваренный дом Бавария» · Северная Осетия</div>
+          <ul class="tl-list">
+            <li>Физико-химический анализ сырья, пива, безалкогольных напитков и воды — экстрактивность, CO₂, O₂, минерализация, pH</li>
+            <li>Контроль параметров розлива: объём налива, герметичность упаковки, крутящий момент крышек</li>
+            <li>Качество воды (умягчённой, питьевой, минеральной) — минерализация, pH, остаточный озон</li>
+            <li>Мониторинг работы озонатора и линий розлива; работа в системе ХАССП</li>
+            <li>Контроль графиков мойки и концентрации дезинфицирующих средств</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-date">2019 АВГУСТ — 2021 СЕНТЯБРЬ · 2 ГОДА 2 МЕС</div>
+        <div class="tl-card">
+          <h3 class="tl-role">Винодел</h3>
+          <div class="tl-company">KD winery · Владикавказ</div>
+          <ul class="tl-list">
+            <li>Полный цикл производства вина: сбор винограда, получение сусла, ферментация, прессование, выдержка, фильтрация, розлив</li>
+            <li>Анализы винограда (сахаристость, кислотность, зрелость) и виноматериалов (спирт, кислотность, SO₂, фенольные)</li>
+            <li>Разработка и корректировка технологических карт, подбор дрожжей и ферментов</li>
+            <li>Контроль процессов брожения, мацерации, осветления и стабилизации</li>
+            <li>Дегустации и участие в разработке новых сортов вина</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="s-head reveal">
+      <div>
+        <div class="s-num">04 / Образование</div>
+        <h2 class="s-title">СОГУ им. К. Л. <em>Хетагурова</em></h2>
+      </div>
+      <p class="s-sub">Профильное образование в области пищевых биотехнологий.</p>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="year">2024</div>
+        <div class="degree">Магистр · 19.04.02</div>
+        <h3>Северо-Осетинский государственный университет</h3>
+        <p>Факультет химии, биологии и биотехнологии · Продукты питания из растительного сырья · Владикавказ</p>
+      </div>
+      <div class="edu-card reveal">
+        <div class="year">2021</div>
+        <div class="degree">Бакалавр</div>
+        <h3>Северо-Осетинский государственный университет</h3>
+        <p>Факультет химии, биологии и биотехнологии · Продукты питания из растительного сырья · Владикавказ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-card reveal">
+      <div class="s-num" style="justify-content:center;display:inline-flex">05 / Связаться</div>
+      <h2>Открыт к <em>интересным</em><br>предложениям</h2>
+      <p class="lead">Полная или проектная занятость, формат — офис, удалёнка или гибрид. Москва, готов к редким командировкам. От 150 000 ₽.</p>
+      <div class="contact-row">
+        <a class="btn btn-primary" href="tel:+79683553535">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +7 968 355-35-35
+        </a>
+        <a class="btn btn-ghost" href="salmanov-cv.pdf" download>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Скачать резюме PDF
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div>© 2026 Салманов Давид Олегович</div>
+      <div class="mono">Резюме обновлено 04.05.2026</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Theme toggle
+  const root = document.documentElement;
+  const tt = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('theme');
+  if(saved) root.setAttribute('data-theme', saved);
+  tt.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
