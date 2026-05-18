@@ -171,6 +171,21 @@ section{padding:100px 0;position:relative}
 .p-card.feature .p-desc{color:rgba(255,255,255,.85)}
 .p-card.feature .p-icon{background:rgba(255,255,255,.15);color:#fff}
 
+/* APPROACH */
+.approach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.appr-card{background:var(--bg-elev);border:1px solid var(--line);border-radius:18px;padding:28px;transition:all .3s}
+.appr-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:var(--shadow)}
+.appr-ico{width:48px;height:48px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.appr-card h3{font-size:18px;font-weight:600;letter-spacing:-.3px;margin-bottom:8px}
+.appr-card p{font-size:14px;color:var(--muted);line-height:1.55}
+
+/* LANGUAGES */
+.lang-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:24px}
+.lang-card{background:var(--bg-elev);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;justify-content:space-between;align-items:center;transition:all .3s}
+.lang-card:hover{border-color:var(--accent)}
+.lang-name{font-size:18px;font-weight:600;letter-spacing:-.3px}
+.lang-level{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);background:var(--accent-soft);padding:6px 12px;border-radius:6px;font-weight:500}
+
 /* SKILLS */
 .skills-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
 .skill-col h4{font-size:14px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:20px;font-weight:600;display:flex;align-items:center;gap:10px}
@@ -238,6 +253,7 @@ footer .row{display:flex;justify-content:space-between;align-items:center;flex-w
 @media(max-width:900px){
   .hero-grid{grid-template-columns:1fr;gap:60px}
   .hero-visual{max-width:340px;margin:0 auto}
+  .approach-grid{grid-template-columns:repeat(2,1fr)}
   .practice-grid{grid-template-columns:repeat(2,1fr)}
   .p-card.span-3,.p-card.span-2,.p-card.span-4{grid-column:span 2}
   .skills-wrap{grid-template-columns:1fr;gap:32px}
@@ -248,6 +264,7 @@ footer .row{display:flex;justify-content:space-between;align-items:center;flex-w
   .hero{padding:48px 0 64px}
 }
 @media(max-width:500px){
+  .approach-grid{grid-template-columns:1fr}
   .practice-grid{grid-template-columns:1fr}
   .p-card.span-3,.p-card.span-2,.p-card.span-4{grid-column:span 1}
   .container{padding:0 20px}
@@ -260,6 +277,7 @@ footer .row{display:flex;justify-content:space-between;align-items:center;flex-w
   <div class="nav-inner">
     <div class="brand"><span class="brand-dot"></span>САЛМАНОВ · CV</div>
     <div class="nav-links">
+      <a href="#approach">Подход</a>
       <a href="#practice">Направления</a>
       <a href="#skills">Навыки</a>
       <a href="#experience">Опыт</a>
@@ -348,12 +366,55 @@ footer .row{display:flex;justify-content:space-between;align-items:center;flex-w
   </div>
 </section>
 
+<!-- APPROACH -->
+<section id="approach">
+  <div class="container">
+    <div class="s-head reveal">
+      <div>
+        <div class="s-num">01 / Подход</div>
+        <h2 class="s-title">Как я <em>работаю</em></h2>
+      </div>
+      <p class="s-sub">Что для меня важно в лабораторной и производственной работе.</p>
+    </div>
+    <div class="approach-grid">
+      <div class="appr-card reveal">
+        <div class="appr-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Внимание к деталям</h3>
+        <p>Точность в измерениях, аккуратность в документации и протоколах. В пищевом производстве и санитарии цена ошибки слишком высока.</p>
+      </div>
+      <div class="appr-card reveal">
+        <div class="appr-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Системность и анализ</h3>
+        <p>Систематизирую данные, формулирую выводы, оперативно принимаю решения. Опыт научных публикаций приучил выстраивать аргументацию от результата.</p>
+      </div>
+      <div class="appr-card reveal">
+        <div class="appr-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-3z"/></svg>
+        </div>
+        <h3>Самодисциплина</h3>
+        <p>Ответственность за результат, соблюдение регламентов ХАССП и техники безопасности. Работаю в одинаковом темпе и в лаборатории, и в цехе.</p>
+      </div>
+      <div class="appr-card reveal">
+        <div class="appr-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Профессиональный рост</h3>
+        <p>Регулярно посещаю отраслевые конференции и выставки, читаю профильную литературу на английском, готовлю собственные публикации.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRACTICE BENTO -->
 <section id="practice">
   <div class="container">
     <div class="s-head reveal">
       <div>
-        <div class="s-num">01 / Направления</div>
+        <div class="s-num">02 / Направления</div>
         <h2 class="s-title">Где я приношу <em>пользу</em> производству</h2>
       </div>
       <p class="s-sub">Восемь направлений работы — от рутинных анализов до научных публикаций по тематике санобработки.</p>
@@ -440,7 +501,7 @@ footer .row{display:flex;justify-content:space-between;align-items:center;flex-w
   <div class="container">
     <div class="s-head reveal">
       <div>
-        <div class="s-num">02 / Навыки</div>
+        <div class="s-num">03 / Навыки</div>
         <h2 class="s-title">Инструменты <em>и методы</em></h2>
       </div>
       <p class="s-sub">Лабораторное оборудование, нормативная база, soft skills — что есть в арсенале.</p>
@@ -475,13 +536,28 @@ footer .row{display:flex;justify-content:space-between;align-items:center;flex-w
         </div>
       </div>
       <div class="skill-col reveal">
-        <h4>Цифровые & доп.</h4>
+        <h4>Инструменты</h4>
         <div class="skill-tags">
-          <span>MS Office · Excel</span><span>1С</span>
+          <span>MS Office</span><span>Excel</span><span>1С</span>
+          <span>Электронная почта</span>
           <span>Научные публикации</span><span>Тезисы конференций</span>
-          <span>Русский — родной</span><span>Английский — работа с текстом</span>
-          <span>Права кат. B</span>
+          <span>Презентации</span><span>Поиск в Интернет-источниках</span>
         </div>
+      </div>
+    </div>
+
+    <div class="lang-grid reveal" style="margin-top:48px">
+      <div class="lang-card">
+        <div class="lang-name">Русский</div>
+        <div class="lang-level">Native</div>
+      </div>
+      <div class="lang-card">
+        <div class="lang-name">Английский</div>
+        <div class="lang-level">Работа с текстом</div>
+      </div>
+      <div class="lang-card">
+        <div class="lang-name">Водительские права</div>
+        <div class="lang-level">Категория B</div>
       </div>
     </div>
   </div>
@@ -492,7 +568,7 @@ footer .row{display:flex;justify-content:space-between;align-items:center;flex-w
   <div class="container">
     <div class="s-head reveal">
       <div>
-        <div class="s-num">03 / Опыт</div>
+        <div class="s-num">04 / Опыт</div>
         <h2 class="s-title">От лозы до <em>лаборатории</em></h2>
       </div>
       <p class="s-sub">Три позиции, три отрасли, общий стаж 4 года 6 месяцев.</p>
@@ -551,7 +627,7 @@ footer .row{display:flex;justify-content:space-between;align-items:center;flex-w
   <div class="container">
     <div class="s-head reveal">
       <div>
-        <div class="s-num">04 / Образование</div>
+        <div class="s-num">05 / Образование</div>
         <h2 class="s-title">СОГУ им. К. Л. <em>Хетагурова</em></h2>
       </div>
       <p class="s-sub">Профильное образование в области пищевых биотехнологий.</p>
@@ -577,7 +653,7 @@ footer .row{display:flex;justify-content:space-between;align-items:center;flex-w
 <section id="contact">
   <div class="container">
     <div class="contact-card reveal">
-      <div class="s-num" style="justify-content:center;display:inline-flex">05 / Связаться</div>
+      <div class="s-num" style="justify-content:center;display:inline-flex">06 / Связаться</div>
       <h2>Открыт к <em>интересным</em><br>предложениям</h2>
       <p class="lead">Полная или проектная занятость, формат — офис, удалёнка или гибрид. Москва, готов к редким командировкам. От 150 000 ₽.</p>
       <div class="contact-row">
@@ -585,9 +661,17 @@ footer .row{display:flex;justify-content:space-between;align-items:center;flex-w
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           +7 968 355-35-35
         </a>
+        <a class="btn btn-primary" href="mailto:dave.salmanov@yandex.ru">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          dave.salmanov@yandex.ru
+        </a>
+        <a class="btn btn-ghost" href="https://t.me/DrillMyPath" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+          Telegram
+        </a>
         <a class="btn btn-ghost" href="salmanov-cv.pdf" download>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Скачать резюме PDF
+          PDF
         </a>
       </div>
     </div>
